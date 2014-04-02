@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 shared_examples 'ransack_date_search' do |controller_klass, klass, opts|
   def send_request(params={q: {}})
     spree_get :index, params
