@@ -1,0 +1,76 @@
+<% content_for :page_title do %>
+  <%= Spree.t(:subscription) %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <li><%= link_to_with_icon 'icon-arrow-left', Spree.t(:back_to_reports_list), spree.admin_reports_url, :class => 'button' %></li>
+<% end %>
+
+<% content_for :table_filter_title do %>
+  <%= Spree.t(:subscription_date_search) %>
+<% end %>
+
+<% content_for :table_filter do %>
+  <%= search_form_for @search, :url => spree.admin_subscriptions_url  do |s| %>
+    <div class="date-range-filter field align-center">
+      <%= label_tag nil, Spree.t(:start), :class => 'inline' %>
+      <%= s.text_field :subscribed_at_gt, :class => 'datepicker datepicker-from', :value => datepicker_field_value(params[:q][:subscribed_at_gt]) %>
+      
+      <span class="range-divider">
+        <i class="icon-arrow-right"></i>
+      </span>
+
+      <%= s.text_field :subscribed_at_lt, :class => 'datepicker datepicker-to', :value => datepicker_field_value(params[:q][:subscribed_at_lt]) %>
+      <%= label_tag nil, Spree.t(:end), :class => 'inline' %>
+    </div>
+
+    <div class="date-range-filter field align-center">
+      <%= label_tag nil, Spree.t(:email), :class => 'inline' %>
+      <%= s.text_field :email_eq, style: "width:240px" %>
+    </div>
+
+    <div class="actions filter-actions">
+      <%= button Spree.t(:search), 'icon-search'  %>
+    </div>
+  <% end %>
+<% end %>
+
+<% if @subscriptions.any? %>
+  <table class="index" id='listing_subscriptions'>
+    <colgroup>
+      <col style="width: 30%">
+      <col style="width: 20%">
+      <col style="width: 15%">
+      <col style="width: 15%">
+      <col style="width: 20%">
+    </colgroup>
+    <thead>
+      <tr data-hook="admin_subscriptions_index_headers">
+        <th><%= Spree.t(:email) %></th>
+        <th><%= Spree.t(:plan) %></th>
+        <th><%= Spree.t(:subscribed_at) %></th>
+        <th><%= Spree.t(:unsubscribed_at) %></th>
+        <th data-hook="admin_recurring_plans_index_header_actions" class="actions"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @subscriptions.each do |subscription|%>
+        <tr data-hook="admin_subscriptions_index_rows" class="<%= cycle('odd', 'even')%>">
+          <td class="align-center"><%= subscription.email %></td>
+          <td class="align-center"><%= link_to subscription.plan.api_plan_id, edit_admin_recurring_plan_url(subscription.plan.recurring, subscription.plan) %></td>
+          <td class="align-center"><%= subscription.subscribed_at.try(:strftime, '%d-%h-%Y') %></td>
+          <td class="align-center"><%= subscription.unsubscribed_at.try(:strftime, '%d-%h-%Y') || 'N/A' %></td>
+          <td data-hook="admin_recurring_plans_index_row_actions" class="actions">
+            <%= link_to Spree.t(:view_events), admin_subscription_events_url(q: {subscription_email_eq: subscription.email}) %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  
+  <%= paginate @subscriptions %>
+<% else %>
+  <div class="alpha sixteen columns no-objects-found">
+    <%= Spree.t(:no_resource_found, resource: I18n.t(:other, scope: 'activerecord.models.spree/subscription')) %>
+  </div>
+<% end %>

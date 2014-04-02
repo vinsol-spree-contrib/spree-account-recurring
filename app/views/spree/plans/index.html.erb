@@ -1,0 +1,14 @@
+<h2><%= Spree.t(:plans) %></h2>
+<br/>
+<% @plans.each do |plan| %>
+  <div style='float:left;padding:20px;border:solid'>
+    <strong><%= plan.name %></strong><br/>
+    <%= number_to_currency plan.amount %> every <%= plan.interval_count %> <%= plan.interval.pluralize(plan.interval_count) %><br/>
+    <%= plan.trial_period_days %> <%= 'day'.pluralize(plan.trial_period_days) %> trial <br/>
+    <br/>
+    <% if spree_current_user %>
+      <%= button_link_to 'Subscribe', new_plan_subscription_url(plan) %>
+    <% end %>
+  </div>
+<% end %>
+<br style='clear:both'/>

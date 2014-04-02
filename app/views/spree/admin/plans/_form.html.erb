@@ -1,0 +1,47 @@
+<div data-hook="admin_plan_form_fields">
+
+  <div data-hook="plan">
+    <div class="alpha four columns">
+      <div class="field">
+        <%= f.label :interval, Spree.t(:interval) %>
+        <%= f.select :interval, @recurring.class::INTERVAL.collect{|k, v| [v, k]}, {}, {:disabled => @plan.persisted?, class: 'select2 fullwidth'} %>
+      </div>
+
+      <div class="field">
+        <%= f.label :interval_count, Spree.t(:every) %>
+        <%= f.select :interval_count, (1..11).collect {|i| [i, i]}, {}, {:disabled => @plan.persisted?, class: 'select2 fullwidth'} %>
+      </div>
+
+      <div class="field">
+        <%= f.label :currency, Spree.t(:currency) %>
+        <%= f.select :currency, @recurring.class::CURRENCY.collect{|k, v| [v, k]}, {}, {:disabled => @plan.persisted?, class: 'select2 fullwidth'} %>
+      </div>
+    </div>
+
+    <div class="omega eight columns">
+      <div class="field">
+        <%= f.label :name, Spree.t(:name) %>
+        <%= f.text_field :name %>
+      </div>
+
+      <div class="field">
+        <%= f.label :amount, Spree.t(:amount) %>
+        <%= f.text_field :amount, :disabled => @plan.persisted? %>
+      </div>
+
+      <div class="field">
+        <%= f.label :trial_period_days, Spree.t(:trial_period_days) %>
+        <%= f.text_field :trial_period_days, :disabled => @plan.persisted? %>
+      </div>
+
+      <div class="field">
+        <%= f.label :active, Spree.t(:active) %>
+        <%= f.check_box :active %>&nbsp;&nbsp;&nbsp;&nbsp;
+        <%= f.label :default, Spree.t(:default) %>
+        <%= f.check_box :default %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="clear"></div>

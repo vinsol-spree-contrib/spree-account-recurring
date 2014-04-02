@@ -1,0 +1,43 @@
+en:
+  activerecord:
+    models:
+      spree/recurring:
+        one: Recurring
+        other: Recurrings
+      spree/plan:
+        one: Plan
+        other: Plans
+      spree/subscription:
+        one: Subscription
+        other: Subscriptions
+      spree/subscription_event:
+        one: Subscription Event
+        other: Subscription Events
+  spree:
+    api_plan_id: API Plan ID
+    amount: Amount
+    back_to_recurrings_list: Back To Recurrings List
+    back_to_plans_list: Back To Plans List
+    currency: Currency
+    editing_recurring: Editing Recurring
+    editing_plan: Editing Plan
+    every: Every
+    interval: Interval
+    interval_count: Interval Count
+    manage_plans: Manage Plans
+    name: Name
+    new_recurring: New Recurring
+    new_plan: New Plan
+    plans: Plans
+    recurring: Recurring
+    request_type: Request Type
+    subscribe: Subscribe
+    subscriptions: Subscriptions
+    subscription_events: Subscription Events
+    subscription_search: Subscription Search
+    subscription_event_search: Subscription Event Search
+    subscribed_at: Subscribed At
+    unsubscribed_at: Unsubscribed At
+    trial_period_days: Trial Period Days
+    unsubscribe: Unsubscribe
+    view_events: View Events
