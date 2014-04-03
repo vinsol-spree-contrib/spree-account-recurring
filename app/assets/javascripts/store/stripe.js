@@ -1,5 +1,21 @@
 // Inspired by https://stripe.com/docs/stripe.js
 
+mapCC = function(ccType){
+  if(ccType == 'MasterCard'){
+    return 'mastercard';
+  } else if(ccType == 'Visa'){
+    return 'visa';
+  } else if(ccType == 'American Express'){
+    return 'amex';
+  } else if(ccType == 'Discover'){
+    return 'discover';
+  } else if(ccType == 'Diners Club'){
+    return 'dinersclub';
+  } else if(ccType == 'JCB'){
+    return 'jcb';
+  }
+}
+
 $(document).ready(function(){
   // For errors that happen later.
   Spree.stripePaymentMethod.prepend("<div id='stripeError' class='errorExplanation' style='display:none'></div>")
