@@ -13,7 +13,6 @@ module Spree
 
     validates :plan_id, :email, :user_id, presence: true
     validates :plan_id, uniqueness: { scope: [:user_id, :unsubscribed_at] }
-    validates :email, uniqueness: { scope: :unsubscribed_at }
     validates :user_id, uniqueness: { scope: :unsubscribed_at }
 
     delegate_belongs_to :plan, :api_plan_id
@@ -24,11 +23,11 @@ module Spree
     private
 
     def set_email
-      self.email = user.email
+      self.email = user.try(:email)
     end
 
     def verify_plan
-      errors.add :plan_id, "is not active." unless plan.visible?
+      errors.add :plan_id, "is not active." unless plan.try(:visible?)
     end
   end
 end
