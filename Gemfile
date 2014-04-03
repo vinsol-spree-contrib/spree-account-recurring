@@ -23,6 +23,7 @@ group :test do
   gem 'rspec-rails',  '~> 2.13'
   gem 'simplecov'
   gem 'selenium-webdriver'
+  gem 'stripe-ruby-mock', '1.10.1.2'
 end
 
 gemspec

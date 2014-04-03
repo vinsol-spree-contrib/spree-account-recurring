@@ -20,6 +20,4 @@ Gem::Specification.new do |s|
   s.add_dependency 'stripe_tester'
 
   s.add_development_dependency 'rspec-rails',  '~> 2.13'
-  s.add_development_dependency 'shoulda-matchers'
-  s.add_development_dependency 'spree_auth_devise'
 end
