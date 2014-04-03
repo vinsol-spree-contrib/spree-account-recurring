@@ -19,10 +19,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'stripe', '1.10.1'
   s.add_dependency 'stripe_tester'
 
-  s.add_development_dependency 'capybara', '~> 2.1'
-  s.add_development_dependency 'factory_girl', '~> 4.2'
   s.add_development_dependency 'rspec-rails',  '~> 2.13'
   s.add_development_dependency 'shoulda-matchers'
   s.add_development_dependency 'spree_auth_devise'
-  s.add_development_dependency 'simplecov'
 end
