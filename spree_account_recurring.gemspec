@@ -2,7 +2,7 @@
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_account_recurring'
-  s.version     = '2.1.3.beta'
+  s.version     = '1.0.0'
   s.summary     = 'Account Recurrring for Spree Commerce'
   s.description = s.summary
   s.required_ruby_version = '>= 1.9.3'
@@ -11,12 +11,11 @@ Gem::Specification.new do |s|
   s.email     = 'priyank.gupta@vinsol.com'
   s.homepage  = 'http://www.vinsol.com'
 
-  #s.files       = `git ls-files`.split("\n")
-  #s.test_files  = `git ls-files -- {test,spec,features}/*`.split("\n")
+  s.files     = Dir['LICENSE', 'README.md', 'app/**/*', 'config/**/*', 'lib/**/*', 'db/**/*']
   s.require_path = 'lib'
   s.requirements << 'none'
 
-  s.add_dependency 'spree_core', '2.1.6'
+  s.add_dependency 'spree_core', '~> 2.1'
   s.add_dependency 'stripe', '1.10.1'
   s.add_dependency 'stripe_tester'
 
