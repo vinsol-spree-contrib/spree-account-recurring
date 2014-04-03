@@ -5,6 +5,7 @@ module Spree
     include ApiHandler
 
     acts_as_restrictive_destroyer column: :unsubscribed_at
+    attr_accessor :card_token
 
     belongs_to :plan
     belongs_to :user
