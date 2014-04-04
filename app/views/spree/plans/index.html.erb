@@ -7,7 +7,7 @@
     <%= plan.trial_period_days %> <%= 'day'.pluralize(plan.trial_period_days) %> trial <br/>
     <br/>
     <% if spree_current_user %>
-      <%= button_link_to 'Subscribe', new_plan_subscription_url(plan) %>
+      <%= button_link_to 'Subscribe', new_recurring_plan_subscription_url(plan) %>
     <% end %>
   </div>
 <% end %>
