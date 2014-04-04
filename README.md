@@ -1,4 +1,4 @@
-SpreeAccountRecurring
+Spree Account Recurring
 =======================
 
 This extension allows recurring payments (subscriptions) using Stripe.
@@ -8,7 +8,7 @@ All plans and subscriptin scenarios are been managed as per Stripe Docs here: ht
 Installation
 ------------
 
-Add spree_account_recurring to your Gemfile:
+Add `spree_account_recurring` to your `Gemfile`:
 
 ```ruby
 gem 'spree_account_recurring', branch: '2-2-stable'
@@ -76,4 +76,21 @@ Simply add this require statement to your spec_helper:
 require 'spree_account_recurring/factories'
 ```
 
-Copyright (c) 2013 [VinSol], released under the New BSD License
+Contributing
+------------
+
+1. Fork the repo.
+2. Clone your repo.
+3. Run `bundle install`.
+4. Run `bundle exec rake test_app` to create the test application in `spec/test_app`.
+5. Make your changes.
+6. Ensure specs pass by running `bundle exec rspec spec`.
+7. Submit your pull request.
+
+
+Credits
+-------
+
+[![vinsol.com: Ruby on Rails, iOS and Android developers](http://vinsol.com/vin_logo.png "Ruby on Rails, iOS and Android developers")](http://vinsol.com)
+
+Copyright (c) 2014 [vinsol.com](http://vinsol.com "Ruby on Rails, iOS and Android developers"), released under the New MIT License
