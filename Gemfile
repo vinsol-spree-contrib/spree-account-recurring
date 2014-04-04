@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'mysql2'
+gem 'sqlite3'
 
 group :assets do
   gem 'coffee-rails'
