@@ -1,7 +1,9 @@
 SpreeAccountRecurring
 =======================
 
-Introduction goes here.
+This extension allows recurring payments (subscriptions) using Stripe.
+
+All plans and subscriptin scenarios are been managed as per Stripe Docs here: https://stripe.com/docs/api
 
 Installation
 ------------
@@ -9,7 +11,7 @@ Installation
 Add spree_account_recurring to your Gemfile:
 
 ```ruby
-gem 'spree_account_recurring'
+gem 'spree_account_recurring', branch: '2-2-stable'
 ```
 
 Bundle your dependencies and run the installation generator:
@@ -18,6 +20,43 @@ Bundle your dependencies and run the installation generator:
 bundle
 bundle exec rails g spree_account_recurring:install
 ```
+
+Usage
+-----
+
+At Admin end this will add a configuration tab as "Recurring".
+
+Creating a Recurring Provider:
+- Create a recurring using 'Spree::Recurring::StripeRecurring' Provider and save
+- Add secret key and public key provider by stripe to this recurring.
+
+Creating Plans for Recurring Provider:
+- Go to "Manage Plans" from Recurring edit page.
+- Create a plan by specifying respective details. This will create the same plan on your stripe account.
+- Only name can be updated for a plan.
+
+One Recurring Provider can have multiple plans.
+
+At Front end you can view all plans here: http://localhost:3000/plans
+
+Subscribe a plan:
+- Click subscribe for any plan.
+- Fill in credit card details and submit.
+- This will create a customer in Stripe for user and subscribe that user respective to plan.
+
+Unsubscribe a plan:
+- In plans page subscribed plan will be listed and from there user can unsubscribe from plan.
+
+At Admin, all subscriptions can be seen under "Reports" -> "Subscriptions".
+
+Stripe Webhook
+--------------
+
+Create a webhook at stripe with url http://your.domain.name/recurring_hooks/handler which will receive below mentioned stripe event hooks.
+
+Events: customer.subscription.deleted, customer.subscription.created, customer.subscription.updated, invoice.payment_succeeded, invoice.payment_failed, charge.succeeded, charge.failed, charge.refunded, charge.captured, plan.created, plan.updated, plan.deleted
+
+These events can be viewed at admin in "Reports" -> "Subscription Events"
 
 Testing
 -------
@@ -37,4 +76,4 @@ Simply add this require statement to your spec_helper:
 require 'spree_account_recurring/factories'
 ```
 
-Copyright (c) 2013 [name of extension creator], released under the New BSD License
+Copyright (c) 2013 [VinSol], released under the New BSD License
