@@ -3,13 +3,13 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_account_recurring'
   s.version     = '1.0.0'
-  s.summary     = 'Account Recurrring for Spree Commerce'
+  s.summary     = 'Spree extension to manage recurring payments/subscriptions using Stripe Payment Gateway.'
   s.description = s.summary
   s.required_ruby_version = '>= 1.9.3'
 
   s.author    = 'Priyank Gupta'
-  s.email     = 'priyank.gupta@vinsol.com'
-  s.homepage  = 'http://www.vinsol.com'
+  s.email     = 'info@vinsol.com'
+  s.homepage  = 'http://vinsol.com'
 
   s.files     = Dir['LICENSE', 'README.md', 'app/**/*', 'config/**/*', 'lib/**/*', 'db/**/*']
   s.require_path = 'lib'
