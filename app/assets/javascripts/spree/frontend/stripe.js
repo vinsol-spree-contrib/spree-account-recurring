@@ -20,6 +20,10 @@ $(document).ready(function(){
   // For errors that happen later.
   Spree.stripePaymentMethod.prepend("<div id='stripeError' class='errorExplanation' style='display:none'></div>")
 
+  $(".cardNumber").payment('formatCardNumber');
+  $(".cardExpiry").payment('formatCardExpiry');
+  $(".cardCode").payment('formatCardCVC');
+
   $('.continue').on('click', function(){
     $('#stripeError').hide();
     if(Spree.stripePaymentMethod.is(':visible')){
