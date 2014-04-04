@@ -13,7 +13,7 @@ module Spree
     def create
       @subscription = @plan.subscriptions.build(subscription_params.merge(user_id: spree_current_user.id))
       if @subscription.save_and_manage_api
-        redirect_to plan_subscription_url(@plan, @subscription), notice: "Thank you for subscribing!"
+        redirect_to recurring_plan_subscription_url(@plan, @subscription), notice: "Thank you for subscribing!"
       else
         render :new
       end
@@ -62,7 +62,7 @@ module Spree
     def authenticate_subscription
       if subscription = spree_current_user.subscriptions.undeleted.first
         flash[:alert] = "You have already subscribed."
-        redirect_to plan_subscription_url(@plan, subscription)
+        redirect_to recurring_plan_subscription_url(@plan, subscription)
       end
     end
   end
