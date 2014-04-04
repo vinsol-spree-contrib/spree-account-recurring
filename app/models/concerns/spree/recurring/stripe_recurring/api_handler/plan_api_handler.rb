@@ -40,7 +40,7 @@ module Spree
           end
 
           def stripe_amount(amount)
-            amount * 100
+            (amount * 100).to_i
           end
         end
       end

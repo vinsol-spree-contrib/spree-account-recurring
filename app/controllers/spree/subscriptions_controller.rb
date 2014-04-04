@@ -21,7 +21,7 @@ module Spree
 
     def destroy
       if @subscription.save_and_manage_api(unsubscribed_at: Time.current)
-        redirect_to plans_path, notice: "Subscription has been cancelled."
+        redirect_to recurring_plans_path, notice: "Subscription has been cancelled."
       else
         render :show
       end
@@ -32,14 +32,14 @@ module Spree
     def find_active_plan
       unless @plan = Spree::Plan.active.where(id: params[:plan_id]).first
         flash[:error] = "Plan not found."
-        redirect_to plans_url
+        redirect_to recurring_plans_url
       end
     end
 
     def find_plan
       unless @plan = Spree::Plan.where(id: params[:plan_id]).first
         flash[:error] = "Plan not found."
-        redirect_to plans_url
+        redirect_to recurring_plans_url
       end
     end
 
