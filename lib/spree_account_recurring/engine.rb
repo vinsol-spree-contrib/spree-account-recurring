@@ -6,6 +6,10 @@ module SpreeAccountRecurring
 
     config.autoload_paths += %W(#{config.root}/lib)
 
+    Spree::Core::Environment.class_eval do
+      attr_accessor :recurring_providers
+    end
+
     # use rspec for tests
     config.generators do |g|
       g.test_framework :rspec
@@ -18,5 +22,9 @@ module SpreeAccountRecurring
     end
 
     config.to_prepare &method(:activate).to_proc
+
+    initializer "spree.register.recurring_providers" do |app|
+      app.config.spree.recurring_providers = [Spree::Recurring::StripeRecurring]
+    end
   end
 end

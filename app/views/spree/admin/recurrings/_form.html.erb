@@ -5,7 +5,7 @@
     <div class="alpha four columns">
       <div id="preference-settings" data-hook class="field">
         <%= label_tag nil, Spree.t(:provider) %>
-        <%= select(:recurring, :type, Spree::Recurring.subclasses.collect {|pro| [pro.display_name, pro]}, {}, {disabled: !@recurring.new_record?, class: 'select2 fullwidth'}) %>
+        <%= select(:recurring, :type, Rails.application.config.spree.recurring_providers.collect {|pro| [pro.display_name, pro]}, {}, {disabled: !@recurring.new_record?, class: 'select2 fullwidth'}) %>
 
         <% unless @recurring.new_record? %>
           <%= preference_fields(@recurring, f) %>
