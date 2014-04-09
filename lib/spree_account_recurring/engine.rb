@@ -1,6 +1,9 @@
 module SpreeAccountRecurring
   class Engine < Rails::Engine
     require 'spree/core'
+    require 'spree/core/environment_extension.rb'
+    require 'spree/core/environment.rb'
+    
     isolate_namespace Spree
     engine_name 'spree_account_recurring'
 

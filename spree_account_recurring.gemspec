@@ -2,7 +2,7 @@
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_account_recurring'
-  s.version     = '1.0.2'
+  s.version     = '1.0.3'
   s.summary     = 'Spree extension to manage recurring payments/subscriptions using Stripe Payment Gateway.'
   s.description = s.summary
   s.required_ruby_version = '>= 1.9.3'

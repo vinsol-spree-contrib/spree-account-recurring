@@ -11,7 +11,7 @@ Installation
 Install `spree_account_recurring` by adding the following to your `Gemfile`:
 
 ```ruby
-gem 'spree_account_recurring', '1.0.2'
+gem 'spree_account_recurring', '1.0.3'
 ```
 
 Bundle your dependencies and run the installation generator:
