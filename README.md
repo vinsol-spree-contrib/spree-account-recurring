@@ -1,4 +1,4 @@
-Spree Account Recurring [![Code Climate](https://codeclimate.com/github/vinsol/spree-account-recurring.png)](https://codeclimate.com/github/vinsol/spree-account-recurring) [![Build Status](https://travis-ci.org/vinsol/spree-account-recurring.svg?branch=master)](https://travis-ci.org/vinsol/spree-account-recurring)
+Spree Account Recurring [![Code Climate](https://codeclimate.com/github/vinsol/spree-account-recurring.png)](https://codeclimate.com/github/vinsol/spree-account-recurring) [![Build Status](https://travis-ci.org/vinsol/spree-account-recurring.svg?branch=2-2-stable)](https://travis-ci.org/vinsol/spree-account-recurring)
 =========================
 
 Spree extension to manage recurring payments/subscriptions using [Stripe Payment Gateway](https://stripe.com/).
@@ -18,7 +18,7 @@ For older version of Spree
 
 ```ruby
 # Spree 2.1.x
-gem 'spree_account_recurring', '1.0.0'
+gem 'spree_account_recurring', '1.0.3'
 ```
 
 
