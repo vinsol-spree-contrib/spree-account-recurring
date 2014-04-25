@@ -18,7 +18,7 @@ For older version of Spree
 
 ```ruby
 # Spree 2.1.x
-gem 'spree_account_recurring', '1.0.3'
+gem 'spree_account_recurring', '1.0.4'
 ```
 
 
