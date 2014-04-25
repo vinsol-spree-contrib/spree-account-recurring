@@ -7,6 +7,7 @@ describe Spree::Recurring do
   it { should have_readonly_attribute :type }
   it { should validate_presence_of :type }
   it { should validate_presence_of :name }
+  it { should validate_uniqueness_of(:type).with_message('of provider recurring already exists') }
 
   describe 'preferences' do
     describe 'secret_key' do
@@ -110,6 +111,52 @@ describe Spree::Recurring do
       end
 
       it { recurring.default_plan.should eq(nil) }
+    end
+  end
+
+  describe '#has_preferred_keys?' do
+    context 'when preferred_public_key is set' do
+      before(:each) do
+        recurring.preferred_public_key = 'preferred_public_key'
+      end
+
+      context 'when preferred_secret_key is set' do
+        before(:each) do
+          recurring.preferred_secret_key = 'preferred_secret_key'
+        end
+
+        it { recurring.has_preferred_keys?.should be_true }
+      end
+
+      context 'when preferred_secret_key is not set' do
+        before(:each) do
+          recurring.preferred_secret_key = ''
+        end
+
+        it { recurring.has_preferred_keys?.should be_false }
+      end
+    end
+
+    context 'when preferred_public_key is not set' do
+      before(:each) do
+        recurring.preferred_public_key = ''
+      end
+
+      context 'when preferred_secret_key is set' do
+        before(:each) do
+          recurring.preferred_secret_key = 'preferred_secret_key'
+        end
+
+        it { recurring.has_preferred_keys?.should be_false }
+      end
+
+      context 'when preferred_secret_key is not set' do
+        before(:each) do
+          recurring.preferred_secret_key = ''
+        end
+
+        it { recurring.has_preferred_keys?.should be_false }
+      end
     end
   end
 end
