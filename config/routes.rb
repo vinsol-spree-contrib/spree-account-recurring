@@ -4,12 +4,8 @@ Spree::Core::Engine.routes.draw do
       resources :plans, except: :show
     end
 
-    resources :reports, only: :index do
-      collection do
-        resources :subscriptions, only: :index
-        resources :subscription_events, only: :index
-      end
-    end
+    resources :subscriptions, only: :index
+    resources :subscription_events, only: :index
   end
 
   resources :recurring_hooks, only: :none do
