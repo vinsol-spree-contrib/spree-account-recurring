@@ -1,5 +1,5 @@
 module Spree
-  class Recurring < ActiveRecord::Base
+  class Recurring < Spree::Base
     class StripeRecurring < Recurring
       include ApiHandler
 
