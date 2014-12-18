@@ -1,5 +1,5 @@
 module Spree
-  class Recurring < ActiveRecord::Base
+  class Recurring < Spree::Base
     include RestrictiveDestroyer
 
     acts_as_restrictive_destroyer
