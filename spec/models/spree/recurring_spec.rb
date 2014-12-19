@@ -8,6 +8,8 @@ describe Spree::Recurring do
   it { should validate_presence_of :type }
   it { should validate_presence_of :name }
   it { should validate_uniqueness_of(:type).with_message('of provider recurring already exists') }
+  it { is_expected.to have_attribute (:description) }
+  it { is_expected.to have_attribute (:preferences) }
 
   describe 'preferences' do
     describe 'secret_key' do
@@ -125,7 +127,7 @@ describe Spree::Recurring do
           recurring.preferred_secret_key = 'preferred_secret_key'
         end
 
-        it { recurring.has_preferred_keys?.should be_true }
+        it { recurring.has_preferred_keys?.should be true }
       end
 
       context 'when preferred_secret_key is not set' do
@@ -133,7 +135,7 @@ describe Spree::Recurring do
           recurring.preferred_secret_key = ''
         end
 
-        it { recurring.has_preferred_keys?.should be_false }
+        it { recurring.has_preferred_keys?.should be false }
       end
     end
 
@@ -147,7 +149,7 @@ describe Spree::Recurring do
           recurring.preferred_secret_key = 'preferred_secret_key'
         end
 
-        it { recurring.has_preferred_keys?.should be_false }
+        it { recurring.has_preferred_keys?.should be false }
       end
 
       context 'when preferred_secret_key is not set' do
@@ -155,7 +157,7 @@ describe Spree::Recurring do
           recurring.preferred_secret_key = ''
         end
 
-        it { recurring.has_preferred_keys?.should be_false }
+        it { recurring.has_preferred_keys?.should be false }
       end
     end
   end
