@@ -1,5 +1,5 @@
 module Spree
-  class Plan < ActiveRecord::Base
+  class Plan < Spree::Base
     module ApiHandler
       extend ActiveSupport::Concern
 

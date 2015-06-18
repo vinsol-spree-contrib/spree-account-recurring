@@ -5,7 +5,6 @@ module Spree
         extend ActiveSupport::Concern
 
         included do
-          include BeforeEach
           include PlanApiHandler
           include SubscriptionApiHandler
           include SubscriptionEventApiHandler

@@ -1,5 +1,5 @@
 module Spree
-  class Subscription < ActiveRecord::Base
+  class Subscription < Spree::Base
     module RoleSubscriber
       extend ActiveSupport::Concern
 

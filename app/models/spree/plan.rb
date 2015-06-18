@@ -1,5 +1,5 @@
 module Spree
-  class Plan < ActiveRecord::Base
+  class Plan < Spree::Base
     include RestrictiveDestroyer
     include ApiHandler
 

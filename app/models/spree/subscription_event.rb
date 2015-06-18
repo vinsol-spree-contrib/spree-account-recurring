@@ -1,5 +1,5 @@
 module Spree
-  class SubscriptionEvent < ActiveRecord::Base
+  class SubscriptionEvent < Spree::Base
     serialize :response
     
     belongs_to :subscription

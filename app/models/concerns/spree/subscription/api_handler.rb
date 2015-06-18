@@ -1,5 +1,5 @@
 module Spree
-  class Subscription < ActiveRecord::Base
+  class Subscription < Spree::Base
     module ApiHandler
       extend ActiveSupport::Concern
 
@@ -31,8 +31,6 @@ module Spree
       def provider
         plan.try(:recurring).present? ? plan.recurring : (raise ActiveRecord::RecordNotFound.new("Provider not found."))
       end
-
-      private
     end
   end
 end
