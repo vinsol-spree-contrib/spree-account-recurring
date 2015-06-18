@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
   s.require_path = 'lib'
   s.requirements << 'none'
 
-  s.add_dependency 'spree_core', '~> 2.3'
+  s.add_dependency 'spree_core', '~> 2.4'
   s.add_dependency 'stripe', '1.16.0'
   s.add_dependency 'stripe_tester'
 
