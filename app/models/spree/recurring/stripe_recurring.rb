@@ -8,9 +8,7 @@ module Spree
       INTERVAL = { week: 'Weekly', month: 'Monthly', year: 'Annually' }
       CURRENCY = { usd: 'USD', gbp: 'GBP', jpy: 'JPY', eur: 'EUR', aud: 'AUD', hkd: 'HKD', sek: 'SEK', nok: 'NOK', dkk: 'DKK', pen: 'PEN', cad: 'CAD'}
 
-      def before_each
-        set_api_key
-      end
+      after_initialize :set_api_key
     end
   end
 end
