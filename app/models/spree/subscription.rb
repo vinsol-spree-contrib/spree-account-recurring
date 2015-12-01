@@ -7,6 +7,8 @@ module Spree
     acts_as_restrictive_destroyer column: :unsubscribed_at
     attr_accessor :card_token
 
+    self.whitelisted_ransackable_attributes = %w[email subscribed_at]
+
     belongs_to :plan
     belongs_to :user
     has_many :events, class_name: 'Spree::SubscriptionEvent'
