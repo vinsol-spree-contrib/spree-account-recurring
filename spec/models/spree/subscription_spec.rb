@@ -18,4 +18,13 @@ describe Spree::Subscription do
   it { subscription.should validate_presence_of :user_id }
   it { subscription.should validate_uniqueness_of(:plan_id).scoped_to([:user_id, :unsubscribed_at]) }
   it { subscription.should validate_uniqueness_of(:user_id).scoped_to(:unsubscribed_at) }
+
+  describe 'ransack' do
+    it 'has email as ransackable attribute' do
+      expect(Spree::Subscription.ransackable_attributes).to include('email')
+    end
+    it 'has subscribed_at as ransackable attribute' do
+      expect(Spree::Subscription.ransackable_attributes).to include('subscribed_at')
+    end
+  end
 end
