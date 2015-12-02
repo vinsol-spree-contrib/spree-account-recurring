@@ -15,7 +15,7 @@ gem 'spree_backend', '~> 2.3'
 gem 'spree_frontend', '~> 2.3'
 
 group :test do
-  gem 'shoulda-matchers'
+  gem 'shoulda-matchers', '~> 2.8'
   gem 'capybara', '~> 2.1'
   gem 'database_cleaner'
   gem 'factory_girl', '~> 4.2'
