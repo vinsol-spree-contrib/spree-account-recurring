@@ -1,13 +1,11 @@
-<%= render :partial => 'spree/admin/shared/configuration_menu' %>
+<%= render :partial => 'spree/admin/shared/sub_menu/configuration' %>
 
 <% content_for :page_title do %>
   <%= Spree.t(:new_recurring) %>
 <% end %>
 
 <% content_for :page_actions do %>
-  <li>
-    <%= button_link_to Spree.t(:back_to_recurrings_list), admin_recurrings_url, :icon => 'icon-arrow-left' %>
-  </li>  
+  <%= button_link_to Spree.t(:back_to_recurrings_list), admin_recurrings_url, :icon => 'arrow-left' %>
 <% end %>
 
 <%= render :partial => 'spree/shared/error_messages', :locals => { :target => @recurring } %>
@@ -15,8 +13,8 @@
 <%= form_for @recurring, :url => admin_recurrings_url do |f| %>
   <fieldset class="no-border-top">
     <%= render :partial => 'form', :locals => { :f => f } %>
-    <div data-hook="buttons" class="filter-actions actions">
-      <%= button Spree.t(:create), 'icon-ok' %>
+    <div data-hook="buttons" class="form-actions">
+      <%= button Spree.t(:create), 'ok', {class: 'btn-success'} %>
     </div>
   </fieldset>
 <% end %>
