@@ -1,47 +1,49 @@
 <div data-hook="admin_plan_form_fields">
 
   <div data-hook="plan">
-    <div class="alpha four columns">
-      <div class="field">
+    <div class="col-md-4">
+      <div class="form-group">
         <%= f.label :interval, Spree.t(:interval) %>
-        <%= f.select :interval, @recurring.class::INTERVAL.collect{|k, v| [v, k]}, {}, {:disabled => @plan.persisted?, class: 'select2 fullwidth'} %>
+        <%= f.select :interval, @recurring.class::INTERVAL.collect{|k, v| [v, k]}, {}, {:disabled => @plan.persisted?, class: 'select2'} %>
       </div>
 
-      <div class="field">
+      <div class="form-group">
         <%= f.label :interval_count, Spree.t(:every) %>
-        <%= f.select :interval_count, (1..11).collect {|i| [i, i]}, {}, {:disabled => @plan.persisted?, class: 'select2 fullwidth'} %>
+        <%= f.select :interval_count, (1..11).collect {|i| [i, i]}, {}, {:disabled => @plan.persisted?, class: 'select2'} %>
       </div>
 
-      <div class="field">
+      <div class="form-group">
         <%= f.label :currency, Spree.t(:currency) %>
-        <%= f.select :currency, @recurring.class::CURRENCY.collect{|k, v| [v, k]}, {}, {:disabled => @plan.persisted?, class: 'select2 fullwidth'} %>
+        <%= f.select :currency, @recurring.class::CURRENCY.collect{|k, v| [v, k]}, {}, {:disabled => @plan.persisted?, class: 'select2'} %>
       </div>
     </div>
 
-    <div class="omega eight columns">
-      <div class="field">
+    <div class="col-md-8">
+      <div class="form-group">
         <%= f.label :name, Spree.t(:name) %>
-        <%= f.text_field :name %>
+        <%= f.text_field :name, :class => 'form-control' %>
       </div>
 
-      <div class="field">
+      <div class="form-group">
         <%= f.label :amount, Spree.t(:amount) %>
-        <%= f.text_field :amount, :disabled => @plan.persisted? %>
+        <%= f.text_field :amount, :class => 'form-control', :disabled => @plan.persisted? %>
       </div>
 
-      <div class="field">
+      <div class="form-group">
         <%= f.label :trial_period_days, Spree.t(:trial_period_days) %>
-        <%= f.text_field :trial_period_days, :disabled => @plan.persisted? %>
+        <%= f.text_field :trial_period_days, :class => 'form-control', :disabled => @plan.persisted? %>
       </div>
 
-      <div class="field">
-        <%= f.label :active, Spree.t(:active) %>
-        <%= f.check_box :active %>&nbsp;&nbsp;&nbsp;&nbsp;
-        <%= f.label :default, Spree.t(:default) %>
-        <%= f.check_box :default %>
+      <div class="checkbox">
+        <label>
+          <%= f.check_box :active %>
+          <%= Spree.t(:active) %>
+        </label>&nbsp;&nbsp;&nbsp;&nbsp;
+        <label>
+          <%= f.check_box :default %>
+          <%= Spree.t(:default) %>
+        </label>
       </div>
     </div>
   </div>
 </div>
-
-<div class="clear"></div>

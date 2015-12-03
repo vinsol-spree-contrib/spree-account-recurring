@@ -1,11 +1,11 @@
 <div data-hook="admin_recurring_form_fields">
 
-  <div data-hook="recurring">
+  <div data-hook="recurring" class="row">
 
-    <div class="alpha four columns">
-      <div id="preference-settings" data-hook class="field">
+    <div class="col-md-4">
+      <div id="preference-settings" data-hook class="form-group">
         <%= label_tag nil, Spree.t(:provider) %>
-        <%= select(:recurring, :type, Rails.application.config.spree.recurring_providers.collect {|pro| [pro.display_name, pro]}, {}, {disabled: !@recurring.new_record?, class: 'select2 fullwidth'}) %>
+        <%= select(:recurring, :type, Rails.application.config.spree.recurring_providers.collect {|pro| [pro.display_name, pro]}, {}, {disabled: !@recurring.new_record?, class: 'select2'}) %>
 
         <% unless @recurring.new_record? %>
           <%= preference_fields(@recurring, f) %>
@@ -15,28 +15,34 @@
           <% end %>
         <% end %>
       </div>      
-      <div data-hook="active" class="field">
-        <ul>
-          <li>
-            <%= label_tag :nil, Spree.t(:active) %>
-            <%= check_box :recurring, :active %>
-          </li>
-        </ul>
+      <div data-hook="active" class="form-group">
+        <strong><%= Spree.t(:active) %></strong>
+        <div class="radio">
+          <%= label_tag :recurring_active_true do %>
+            <%= radio_button :recurring, :active, true %>
+            <%= Spree.t(:say_yes) %>
+          <% end %>
+        </div>
+
+        <div class="radio">
+          <%= label_tag :recurring_active_false do %>
+            <%= radio_button :recurring, :active, false %>
+            <%= Spree.t(:say_no) %>
+          <% end %>
+        </div>
       </div>
     </div>
     
-    <div class="omega eight columns">
-      <div data-hook="name" class="field">
+    <div class="col-md-8">
+      <div data-hook="name" class="form-group">
         <%= label_tag nil, Spree.t(:name) %>
-        <%= text_field :recurring, :name, :class => 'fullwidth' %>
+        <%= text_field :recurring, :name, :class => 'form-control' %>
       </div>
-      <div data-hook="description" class="field">
+      <div data-hook="description" class="form-group">
         <%= label_tag nil, Spree.t(:description) %>
-        <%= text_area :recurring, :description, {:cols => 60, :rows => 6, :class => 'fullwidth'} %>
+        <%= text_area :recurring, :description, {:cols => 60, :rows => 6, :class => 'form-control'} %>
       </div>  
     </div>
     
   </div>
 </div>
-
-<div class="clear"></div>
