@@ -13,3 +13,4 @@ pkg
 *.swp
 spec/dummy
 spree_account_recurring-*.gem
+.ruby-version
