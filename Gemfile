@@ -14,7 +14,7 @@ gem 'spree', git: 'https://github.com/spree/spree.git', branch: '3-0-stable'
 gem 'spree_auth_devise', github: 'spree/spree_auth_devise', branch: '3-0-stable'
 
 group :test do
-  gem 'shoulda-matchers'
+  gem 'shoulda-matchers', '~> 2.8.0'
   gem 'capybara', '~> 2.1'
   gem 'database_cleaner'
   gem 'factory_girl', '~> 4.2'
