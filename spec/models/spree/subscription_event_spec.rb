@@ -9,4 +9,10 @@ describe Spree::SubscriptionEvent do
   it { should have_readonly_attribute :event_id }
   it { should have_readonly_attribute :subscription_id }
   it { should have_readonly_attribute :request_type }
+
+  describe 'ransack' do
+    it 'has subscription as ransackable association' do
+      expect(Spree::SubscriptionEvent.ransackable_associations).to include('subscription')
+    end
+  end
 end
