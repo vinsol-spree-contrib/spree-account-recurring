@@ -30,9 +30,14 @@ module Spree
           render :edit
         end
       end
-      
+
       def destroy
-        @plan.restrictive_destroy_with_api
+        if @plan.restrictive_destroy_with_api
+          flash[:success] = "Plan has been deleted."
+        else
+          flash[:error] = "Plan could not be deleted."
+        end
+        render_js_for_destroy
       end
 
       private
