@@ -19,5 +19,5 @@ Gem::Specification.new do |s|
   s.add_dependency 'stripe', '1.16.0'
   s.add_dependency 'stripe_tester'
 
-  s.add_development_dependency 'rspec-rails',  '~> 2.13'
+  s.add_development_dependency 'rspec-rails',  '~> 3.0'
 end
