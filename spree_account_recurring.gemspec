@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.version     = '2.0.0'
   s.summary     = 'Spree extension to manage recurring payments/subscriptions using Stripe Payment Gateway.'
   s.description = s.summary
-  s.required_ruby_version = '>= 2.0.0'
+  s.required_ruby_version = '>= 2.1.0'
 
   s.author    = 'Priyank Gupta'
   s.email     = 'info@vinsol.com'
@@ -15,9 +15,9 @@ Gem::Specification.new do |s|
   s.require_path = 'lib'
   s.requirements << 'none'
 
-  s.add_dependency 'spree_core', '~> 3.0.0'
+  s.add_dependency 'spree_core', '~> 3.1.0.beta'
   s.add_dependency 'stripe', '1.16.0'
   s.add_dependency 'stripe_tester'
 
-  s.add_development_dependency 'rspec-rails',  '~> 2.13'
+  s.add_development_dependency 'rspec-rails',  '~> 3.0'
 end

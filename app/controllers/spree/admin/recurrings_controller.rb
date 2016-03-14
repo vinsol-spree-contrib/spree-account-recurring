@@ -31,7 +31,12 @@ module Spree
       end
 
       def destroy
-        @recurring.restrictive_destroy
+        if @recurring.restrictive_destroy
+          flash[:success] = "Recurring has been deleted."
+        else
+          flash[:error] = "Recurring could not be deleted."
+        end
+        render_js_for_destroy
       end
 
       private
