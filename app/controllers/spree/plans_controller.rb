@@ -1,6 +1,6 @@
 module Spree
   class PlansController < StoreController
-    before_filter :load_user_subscriptions
+    before_action :load_user_subscriptions
 
     def index
       @plans = Spree::Plan.visible.order('id desc')
