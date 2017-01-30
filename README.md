@@ -1,4 +1,4 @@
-Spree Account Recurring [![Code Climate](https://codeclimate.com/github/vinsol/spree-account-recurring.png)](https://codeclimate.com/github/vinsol/spree-account-recurring) [![Build Status](https://travis-ci.org/vinsol/spree-account-recurring.svg?branch=master)](https://travis-ci.org/vinsol/spree-account-recurring)
+Spree Account Recurring [![Code Climate](https://codeclimate.com/github/vinsol/spree-account-recurring.png?branch=3-1-stable)](https://codeclimate.com/github/vinsol/spree-account-recurring) [![Build Status](https://travis-ci.org/vinsol/spree-account-recurring.svg?branch=3-1-stable)](https://travis-ci.org/vinsol/spree-account-recurring)
 =========================
 
 Spree extension to manage recurring payments/subscriptions using [Stripe Payment Gateway](https://stripe.com/).
