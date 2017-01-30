@@ -8,10 +8,10 @@ group :assets do
 end
 
 # Provides basic frontend and backend functionalities for testing purposes
-gem 'spree', github: 'spree/spree', branch: 'master'
+gem 'spree', github: 'spree/spree', branch: '3-1-stable'
 
 # Provides basic authentication functionality for testing parts of your engine
-gem 'spree_auth_devise', github: 'spree/spree_auth_devise', branch: 'master'
+gem 'spree_auth_devise', github: 'spree/spree_auth_devise', branch: '3-1-stable'
 
 group :test do
   gem 'shoulda-matchers', '~> 2.8.0'
@@ -19,7 +19,6 @@ group :test do
   gem 'database_cleaner'
   gem 'factory_girl', '~> 4.2'
   gem 'ffaker'
-  #gem 'rspec-rails',  '~> 2.13'
   gem 'simplecov'
   gem 'selenium-webdriver'
   gem 'stripe-ruby-mock', '1.10.1.2'
