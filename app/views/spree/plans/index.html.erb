@@ -8,7 +8,7 @@
     <br/>
     <% if spree_current_user %>
       <% if subscription = @user_subscriptions.find {|s| s.plan_id == plan.id } %>
-        <%= button_link_to Spree.t(:unsubscribe), recurring_plan_subscription_url(plan, subscription), method: :delete, :confirm => "Do you want to unsubscribe ?" %>
+        <%= button_link_to Spree.t(:unsubscribe), recurring_plan_subscription_url(plan, subscription), method: :delete, confirm: "Do you want to unsubscribe ?" %>
       <% else %>
         <%= button_link_to 'Subscribe', new_recurring_plan_subscription_url(plan) %>
       <% end %>
