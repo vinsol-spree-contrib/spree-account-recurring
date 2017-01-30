@@ -64,7 +64,7 @@ module Spree
       end
 
       def preference_params
-        params[ActiveModel::Naming.param_key(@recurring)]
+        params.require(ActiveModel::Naming.param_key(@recurring)).permit!
       end
     end
   end
