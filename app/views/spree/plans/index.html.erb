@@ -7,7 +7,11 @@
     <%= plan.trial_period_days %> <%= 'day'.pluralize(plan.trial_period_days) %> trial <br/>
     <br/>
     <% if spree_current_user %>
-      <%= button_link_to 'Subscribe', new_recurring_plan_subscription_url(plan) %>
+      <% if subscription = @user_subscriptions.find {|s| s.plan_id == plan.id } %>
+        <%= button_link_to Spree.t(:unsubscribe), recurring_plan_subscription_url(plan, subscription), method: :delete, confirm: "Do you want to unsubscribe ?" %>
+      <% else %>
+        <%= button_link_to 'Subscribe', new_recurring_plan_subscription_url(plan) %>
+      <% end %>
     <% end %>
   </div>
 <% end %>
