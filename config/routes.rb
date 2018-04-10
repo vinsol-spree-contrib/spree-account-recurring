@@ -4,7 +4,7 @@ Spree::Core::Engine.routes.draw do
       resources :plans, except: :show
     end
 
-    resources :subscriptions, only: :index
+    resources :subscriptions, only: :index, controller: :subscription_plans
     resources :subscription_events, only: :index
   end
 
@@ -14,7 +14,7 @@ Spree::Core::Engine.routes.draw do
 
   namespace :recurring do
     resources :plans, only: :index do
-      resources :subscriptions, only: [:show, :create, :destroy, :new]
+      resources :subscriptions, only: [:show, :create, :destroy, :new], controller: :subscription_plans
     end
   end
 end
