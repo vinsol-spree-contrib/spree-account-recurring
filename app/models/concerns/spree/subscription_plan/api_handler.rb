@@ -1,5 +1,5 @@
 module Spree
-  class Subscription < Spree::Base
+  class SubscriptionPlan < Spree::Base
     module ApiHandler
       extend ActiveSupport::Concern
 
