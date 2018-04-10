@@ -9,7 +9,7 @@ module Spree
     private
       def load_user_subscriptions
         if spree_current_user
-          @user_subscriptions = spree_current_user.subscriptions.undeleted.all.to_a
+          @user_subscriptions = spree_current_user.subscription_plans.undeleted.all.to_a
         else
           @user_subscriptions = []
         end

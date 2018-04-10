@@ -6,7 +6,7 @@ module Spree
     acts_as_restrictive_destroyer
 
     belongs_to :recurring
-    has_many :subscriptions
+    has_many :subscription_plans
 
     validates :amount, :interval, :interval_count, :name, :currency, :recurring_id, :api_plan_id, presence: true
     attr_readonly :amount, :interval, :currency, :id, :trial_period_days, :interval_count, :recurring_id, :api_plan_id
