@@ -1,6 +1,6 @@
 <%= render :partial => 'spree/shared/error_messages', :locals => { :target => @subscription } %>
 
-<%= form_for @subscription, url: recurring_plan_subscriptions_url(@plan) do |f| %>
+<%= form_for @subscription, url: plan_subscriptions_url(@plan) do |f| %>
   <%= image_tag 'credit_cards/credit_card.gif', :id => 'credit-card-image' %>
 
   <div id="plan_<%= @plan.id %>_subscribe">
@@ -25,7 +25,7 @@
       <%= link_to "(#{Spree.t(:what_is_this)})", spree.content_path('cvv'), :target => '_blank', "data-hook" => "cvv_link", :id => "cvv_link" %>
     </p>
   </div>
-  
+
   <%= f.submit Spree.t(:subscribe), class: 'continue btn btn-primary' %>
   <script>Spree.disableSaveOnClick();</script>
 <% end %>

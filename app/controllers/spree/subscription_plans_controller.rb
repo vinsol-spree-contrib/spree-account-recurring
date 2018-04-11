@@ -13,7 +13,7 @@ module Spree
     def create
       @subscription = @plan.subscription_plans.build(subscription_params.merge(user_id: spree_current_user.id))
       if @subscription.save_and_manage_api
-        redirect_to recurring_plan_subscription_url(@plan, @subscription), notice: "Thank you for subscribing!"
+        redirect_to plan_subscription_url(@plan, @subscription), notice: "Thank you for subscribing!"
       else
         render :new
       end
@@ -21,7 +21,7 @@ module Spree
 
     def destroy
       if @subscription.save_and_manage_api(unsubscribed_at: Time.current)
-        redirect_to recurring_plans_path, notice: "Subscription has been cancelled."
+        redirect_to plans_path, notice: "Subscription has been cancelled."
       else
         render :show
       end
@@ -32,14 +32,14 @@ module Spree
     def find_active_plan
       unless @plan = Spree::Plan.active.where(id: params[:plan_id]).first
         flash[:error] = "Plan not found."
-        redirect_to recurring_plans_url
+        redirect_to plans_url
       end
     end
 
     def find_plan
       unless @plan = Spree::Plan.where(id: params[:plan_id]).first
         flash[:error] = "Plan not found."
-        redirect_to recurring_plans_url
+        redirect_to plans_url
       end
     end
 
@@ -62,7 +62,7 @@ module Spree
     def authenticate_subscription
       if subscription = spree_current_user.subscription_plans.undeleted.first
         flash[:alert] = "You have already subscribed."
-        redirect_to recurring_plan_subscription_url(@plan, subscription)
+        redirect_to plan_subscription_url(@plan, subscription)
       end
     end
   end
