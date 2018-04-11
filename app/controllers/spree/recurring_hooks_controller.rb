@@ -28,7 +28,7 @@ module Spree
 
     # CHECK, event comes even if no stripe event
     def find_subscription
-      render_status_ok unless @subscription = Spree::User.find_by(stripe_customer_id: event[:data][:object][:customer]).subscription_plans.last
+      render_status_ok unless @subscription = Spree::User.find_by(stripe_customer_id: event[:data][:object][:customer]).subscription_plans.active.first
     end
 
     def retrieve_api_event
