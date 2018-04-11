@@ -1,4 +1,4 @@
-class CreateSpreeSubscriptionPlan < ActiveRecord::Migration
+class CreateSpreeSubscriptionPlans < ActiveRecord::Migration
   def change
     create_table :spree_subscription_plans do |t|
       t.integer :plan_id
