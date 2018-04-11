@@ -11,7 +11,6 @@ module Spree
             subscription_plan.stripe_subscription_id =  stripe_subscription.id # add stripe subscription id to subscription
           end
 
-          # CHECK, issue
           def unsubscribe(subscription_plan)
             raise_invalid_object_error(subscription_plan, Spree::SubscriptionPlan)
             # subscriptions is on Stripe customer, no changes here

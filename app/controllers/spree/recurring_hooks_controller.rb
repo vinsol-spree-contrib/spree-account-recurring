@@ -26,7 +26,6 @@ module Spree
       render_status_ok if event.blank? || (event[:livemode] != Rails.env.production?) || (!Spree::Recurring::StripeRecurring::WEBHOOKS.include?(event[:type]))
     end
 
-    # CHECK, event comes even if no stripe event
     def find_subscription
       render_status_ok unless @subscription = Spree::User.find_by(stripe_customer_id: event[:data][:object][:customer]).subscription_plans.active.first
     end
