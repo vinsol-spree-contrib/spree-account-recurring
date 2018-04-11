@@ -22,6 +22,7 @@ group :test do
   gem 'simplecov'
   gem 'selenium-webdriver'
   gem 'stripe-ruby-mock', '2.4.1'
+  gem 'byebug'
 end
 
 gemspec
