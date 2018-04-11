@@ -20,7 +20,7 @@ group :test do
   gem 'ffaker'
   gem 'simplecov'
   gem 'selenium-webdriver'
-  gem 'stripe-ruby-mock', '2.5.3'
+  gem 'stripe-ruby-mock', '2.4.1'
 end
 
 gemspec
