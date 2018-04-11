@@ -8,7 +8,7 @@ describe Spree::Plan do
   let(:plan) { recurring.plans.create!(amount: 10, interval: 'month', interval_count: 1, name: 'Test Plan', currency: 'usd', trial_period_days: 0) }
 
   it { plan.should belong_to :recurring }
-  it { plan.should have_many :subscriptions }
+  it { plan.should have_many :subscription_plans }
   it { plan.should validate_presence_of :amount }
   it { plan.should validate_presence_of :interval }
   it { plan.should validate_presence_of :interval_count }
@@ -74,7 +74,7 @@ describe Spree::Plan do
         before(:each) do
           plan.update_column(:deleted_at, nil)
         end
-        
+
         it { Spree::Plan.active.should eq([plan]) }
       end
 
