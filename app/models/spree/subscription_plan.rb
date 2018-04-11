@@ -22,6 +22,8 @@ module Spree
 
     validate :verify_plan, on: :create
 
+    scope :active, -> { where(unsubscribed_at: nil) }
+
     private
 
     def set_email
