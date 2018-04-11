@@ -54,7 +54,7 @@
           <td><%= subscription.subscribed_at.try(:strftime, '%d-%h-%Y') %></td>
           <td><%= subscription.unsubscribed_at.try(:strftime, '%d-%h-%Y') || 'N/A' %></td>
           <td data-hook="admin_recurring_plans_index_row_actions" class="actions">
-            <%= link_to Spree.t(:view_events), admin_subscription_events_url(q: {subscription_email_eq: subscription.email}) %>
+            <%= link_to Spree.t(:view_events), admin_subscription_events_url(q: {subscription_plan_email_eq: subscription.email}) %>
           </td>
         </tr>
       <% end %>
