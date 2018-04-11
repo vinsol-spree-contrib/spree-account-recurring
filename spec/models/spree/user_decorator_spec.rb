@@ -5,7 +5,7 @@ describe Spree::User do
   let(:subscriber) { Spree::Role.create!(name: 'subscriber') }
   let(:empty_array) { [] }
 
-  it { should have_many :subscriptions }
+  it { should have_many :subscription_plans }
 
   describe '#find_or_create_stripe_customer' do
     let(:token) { 'stripe_test_card_token' }

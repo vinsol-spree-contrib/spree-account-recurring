@@ -6,9 +6,9 @@ module Spree
 
     belongs_to :subscription_plan
 
-    validates :event_id, :subscription_id, presence: true
+    validates :event_id, :subscription_plan_id, presence: true
     validates :event_id, uniqueness: true
 
-    attr_readonly :event_id, :subscription_id, :request_type
+    attr_readonly :event_id, :subscription_plan_id, :request_type
   end
 end
