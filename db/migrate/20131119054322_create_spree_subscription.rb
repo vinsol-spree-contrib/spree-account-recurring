@@ -1,6 +1,6 @@
-class CreateSpreeSubscription < ActiveRecord::Migration
+class CreateSpreeSubscriptionPlan < ActiveRecord::Migration
   def change
-    create_table :spree_subscriptions do |t|
+    create_table :spree_subscription_plans do |t|
       t.integer :plan_id
       t.string :email
       t.integer :user_id
@@ -9,8 +9,8 @@ class CreateSpreeSubscription < ActiveRecord::Migration
       t.datetime :unsubscribed_at
     end
 
-    add_index :spree_subscriptions, :subscribed_at
-    add_index :spree_subscriptions, :unsubscribed_at
-    add_index :spree_subscriptions, :plan_id
+    add_index :spree_subscription_plans, :subscribed_at
+    add_index :spree_subscription_plans, :unsubscribed_at
+    add_index :spree_subscription_plans, :plan_id
   end
 end
