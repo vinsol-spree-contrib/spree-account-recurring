@@ -18,7 +18,7 @@ mapCC = function(ccType){
 
 $(document).ready(function(){
   // For errors that happen later.
-  Spree.stripePaymentMethod.prepend("<div id='stripeError' class='errorExplanation' style='display:none'></div>")
+  Spree.stripePaymentMethod.prepend("<p id='stripeError' class='errorExplanation text-danger' style='display:none'></p>")
 
   $(".cardNumber").payment('formatCardNumber');
   $(".cardExpiry").payment('formatCardExpiry');

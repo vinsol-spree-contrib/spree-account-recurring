@@ -1,20 +1,27 @@
 <h2><%= Spree.t(:plans) %></h2>
-<br/>
+<hr>
+<div class="row">
 <% @plans.each do |plan| %>
-  <div style='float:left;padding:20px;border:solid'>
-    <strong><%= plan.name %></strong><br/>
-    <%= number_to_currency plan.amount %> every <%= plan.interval_count %> <%= plan.interval.pluralize(plan.interval_count) %><br/>
-    <%= plan.trial_period_days %> <%= 'day'.pluralize(plan.trial_period_days) %> trial <br/>
-    <br/>
-    <% if spree_current_user %>
-      <% if subscription = @user_subscriptions.find {|s| s.plan_id == plan.id } %>
-        <%= button_link_to Spree.t(:unsubscribe), plan_subscription_plan_url(plan, subscription), method: :delete, confirm: "Do you want to unsubscribe ?" %>
-      <% else %>
-        <% unless spree_current_user.subscription_plans.active.present? %>
-          <%= button_link_to 'Subscribe', new_plan_subscription_plan_url(plan) %>
+  <div class="col-md-3 col-sm-4">
+    <div class="panel panel-default" style="min-height: 180px;">
+      <div class="panel-body" >
+        <strong><%= plan.name %></strong><br/>
+        <%= number_to_currency plan.amount %> every <%= plan.interval_count %> <%= plan.interval.pluralize(plan.interval_count) %><br/>
+        <%= plan.trial_period_days %> <%= 'day'.pluralize(plan.trial_period_days) %> trial <br/>
+        <% if spree_current_user %>
+          <% if subscription = @user_subscriptions.find {|s| s.plan_id == plan.id } %>
+            <hr>
+            <%= button_link_to Spree.t(:unsubscribe), plan_subscription_plan_url(plan, subscription), method: :delete, confirm: "Do you want to unsubscribe ?" %>
+          <% else %>
+            <% unless spree_current_user.subscription_plans.active.present? %>
+              <hr>
+              <%= button_link_to 'Subscribe', new_plan_subscription_plan_url(plan), class: 'btn btn-sm btn-default' %>
+            <% end %>
+          <% end %>
         <% end %>
-      <% end %>
-    <% end %>
+      </div>
+
+    </div>
   </div>
 <% end %>
-<br style='clear:both'/>
+</div>
