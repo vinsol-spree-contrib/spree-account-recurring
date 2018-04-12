@@ -7,6 +7,9 @@ Gem::Specification.new do |s|
   s.description = s.summary
   s.required_ruby_version = '>= 2.1.0'
 
+  spree_version = '>= 3.2.0', '< 4.0.0'
+  s.add_dependency 'spree_core', spree_version
+
   s.author    = 'Priyank Gupta'
   s.email     = 'info@vinsol.com'
   s.homepage  = 'http://vinsol.com'
@@ -15,7 +18,7 @@ Gem::Specification.new do |s|
   s.require_path = 'lib'
   s.requirements << 'none'
 
-  s.add_dependency 'spree_core', '~> 3.1.0'
+  s.add_development_dependency "appraisal"
   s.add_dependency 'stripe', '1.58.0'
   s.add_dependency 'stripe_tester'
 
