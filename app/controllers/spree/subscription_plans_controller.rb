@@ -1,6 +1,6 @@
 module Spree
   class SubscriptionPlansController < StoreController
-    prepend_before_filter :load_object
+    prepend_before_action :load_object
     before_action :find_active_plan, only: [:new, :create]
     before_action :find_plan, only: [:show, :destroy]
     before_action :find_subscription, only: [:show, :destroy]
