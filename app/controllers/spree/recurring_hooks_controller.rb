@@ -10,9 +10,9 @@ module Spree
     def handler
       @subscription_event = @subscription.events.build(subscription_event_params)
       if @subscription_event.save
-        render_status_ok
+        render_status_ok and return
       else
-        render_status_failure
+        render_status_failure and return
       end
     end
 
@@ -23,11 +23,11 @@ module Spree
     end
 
     def authenticate_webhook
-      render_status_ok if event.blank? || (event[:livemode] != Rails.env.production?) || (!Spree::Recurring::StripeRecurring::WEBHOOKS.include?(event[:type]))
+      render_status_ok and return if event.blank? || (event[:livemode] != Rails.env.production?) || (!Spree::Recurring::StripeRecurring::WEBHOOKS.include?(event[:type]))
     end
 
     def find_subscription
-      render_status_ok unless @subscription = Spree::User.find_by(stripe_customer_id: event[:data][:object][:customer]).subscription_plans.active.first
+      render_status_ok and return unless @subscription = Spree::User.find_by(stripe_customer_id: event[:data][:object][:customer]).subscription_plans.active.first
     end
 
     def retrieve_api_event
@@ -43,11 +43,11 @@ module Spree
     end
 
     def render_status_ok
-      render text: '', status: 200
+      head :ok
     end
 
     def render_status_failure
-      render text: '', status: 403
+      head 403
     end
   end
 end

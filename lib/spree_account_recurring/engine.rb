@@ -6,7 +6,7 @@ module SpreeAccountRecurring
 
     config.autoload_paths += %W(#{config.root}/lib)
 
-    Spree::Core::Environment.class_eval do
+    Spree::Core::Engine::Environment.class_eval do
       attr_accessor :recurring_providers
     end
 
