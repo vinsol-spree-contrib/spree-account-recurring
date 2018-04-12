@@ -1,4 +1,4 @@
-class AddSubscriberRoleToSpreeRoles < ActiveRecord::Migration
+class AddSubscriberRoleToSpreeRoles < ActiveRecord::Migration[4.2]
   def up
     Spree::Role.where(name: "subscriber").first_or_create
     Spree::SubscriptionPlan.includes(:user).uniq.each do |subscription|
