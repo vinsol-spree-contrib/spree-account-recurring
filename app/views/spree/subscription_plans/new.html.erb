@@ -1,6 +1,6 @@
 <%= render :partial => 'spree/shared/error_messages', :locals => { :target => @subscription } %>
 
-<%= form_for @subscription, url: plan_subscriptions_url(@plan) do |f| %>
+<%= form_for @subscription, url: plan_subscription_plans_url(@plan) do |f| %>
   <%= image_tag 'credit_cards/credit_card.gif', :id => 'credit-card-image' %>
 
   <div id="plan_<%= @plan.id %>_subscribe">
