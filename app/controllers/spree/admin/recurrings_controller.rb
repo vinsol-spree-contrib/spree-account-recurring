@@ -3,6 +3,7 @@ module Spree
     class RecurringsController < Spree::Admin::BaseController
       before_action :find_recurring, :only => [:edit, :update, :destroy]
       before_action :build_recurring, :only => :create
+      before_action :ensure_no_plans_with_active_subscription, only: :destroy
 
       def index
         @recurrings = Spree::Recurring.undeleted.order('id desc')
@@ -65,6 +66,13 @@ module Spree
 
       def preference_params
         params[ActiveModel::Naming.param_key(@recurring)].permit!
+      end
+
+      def ensure_no_plans_with_active_subscription
+        if @recurring.plans.any? { |plan| plan.subscription_plans.active.present? }
+          flash[:error] = "You can not delete a recurring with active subscriptions"
+          render_js_for_destroy
+        end
       end
     end
   end
