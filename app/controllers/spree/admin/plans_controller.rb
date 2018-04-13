@@ -3,6 +3,7 @@ module Spree
     class PlansController < Spree::Admin::BaseController
       before_action :load_recurring
       before_action :find_plan, :only => [:edit, :destroy, :update]
+      before_action :ensure_no_active_subscription, only: :destroy
 
       def index
         @plans = Spree::Plan.undeleted.order('id desc')
@@ -61,6 +62,13 @@ module Spree
         unless @plan = @recurring.plans.undeleted.where(id: params[:id]).first
           flash[:error] = "Plan not found."
           redirect_to admin_recurring_plans_path(@recurring)
+        end
+      end
+
+      def ensure_no_active_subscription
+        if @plan.subscription_plans.active.present?
+          flash[:error] = "You can not delete a plan with active subscriptions"
+          render_js_for_destroy
         end
       end
     end
