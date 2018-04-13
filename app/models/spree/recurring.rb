@@ -10,7 +10,7 @@ module Spree
     has_many :plans
     attr_readonly :type
     validates :type, :name, presence: true
-    validates :type, uniqueness: { message: 'of provider recurring already exists', scope: :deleted_at } }
+    validates :type, uniqueness: { message: 'of provider recurring already exists', scope: :deleted_at }
 
     scope :active, -> { undeleted.where(active: true) }
 
