@@ -11,11 +11,11 @@
         <% if spree_current_user %>
           <% if subscription = @user_subscriptions.find {|s| s.plan_id == plan.id } %>
             <hr>
-            <%= button_link_to Spree.t(:unsubscribe), plan_subscription_url(plan, subscription), method: :delete, confirm: "Do you want to unsubscribe ?" %>
+            <%= button_link_to Spree.t(:unsubscribe), plan_subscription_plan_url(plan, subscription), method: :delete, confirm: "Do you want to unsubscribe ?" %>
           <% else %>
             <% unless spree_current_user.subscription_plans.active.present? %>
               <hr>
-              <%= button_link_to 'Subscribe', new_plan_subscription_url(plan), class: 'btn btn-sm btn-default' %>
+              <%= button_link_to 'Subscribe', new_plan_subscription_plan_url(plan), class: 'btn btn-sm btn-default' %>
             <% end %>
           <% end %>
         <% end %>

@@ -13,7 +13,7 @@ module Spree
     def create
       @subscription = @plan.subscription_plans.build(subscription_params.merge(user_id: spree_current_user.id))
       if @subscription.save_and_manage_api
-        redirect_to plan_subscription_url(@plan, @subscription), notice: "Thank you for subscribing!"
+        redirect_to plan_subscription_plan_url(@plan, @subscription), notice: "Thank you for subscribing!"
       else
         render :new
       end
@@ -56,7 +56,7 @@ module Spree
 
     def load_object
       @user ||= spree_current_user
-      authorize! params[:action].to_sym, @user
+      # authorize! params[:action].to_sym, @user
     end
 
     def authenticate_subscription

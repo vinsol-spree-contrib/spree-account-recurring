@@ -4,7 +4,7 @@ Spree::Core::Engine.routes.draw do
       resources :plans, except: :show
     end
 
-    resources :subscriptions, only: :index, controller: :subscription_plans
+    resources :subscription_plans, only: :index
     resources :subscription_events, only: :index
   end
 
@@ -13,6 +13,6 @@ Spree::Core::Engine.routes.draw do
   end
 
   resources :plans, only: :index, controller: :plans do
-    resources :subscriptions, only: [:show, :create, :destroy, :new], controller: :subscription_plans
+    resources :subscription_plans, only: [:show, :create, :destroy, :new]
   end
 end
