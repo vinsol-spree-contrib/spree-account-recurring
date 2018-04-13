@@ -4,7 +4,7 @@ describe Spree::SubscriptionPlan do
   before { StripeMock.start }
   after { StripeMock.stop }
 
-  let!(:subscriber) { Spree::Role.create!(name: 'subscriber') }
+  # let!(:subscriber) { Spree::Role.create!(name: 'subscriber') }
   let(:user) { Spree::User.create!(email: 'user@test.com', password: '123456', password_confirmation: '123456') }
   let(:recurring) { Spree::Recurring::StripeRecurring.create!(name: 'Test recurring', active: true) }
   let(:plan) { recurring.plans.create!(active: true, amount: 10, interval: 'month', interval_count: 1, name: 'Test Plan', currency: 'usd', trial_period_days: 0) }
