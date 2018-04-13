@@ -10,8 +10,9 @@ module Spree
       end
 
       def subscribe
-        provider.subscribe(self)
-        self.subscribed_at = Time.current
+        if provider.subscribe(self)
+          self.subscribed_at = Time.current
+        end
       end
 
       def unsubscribe

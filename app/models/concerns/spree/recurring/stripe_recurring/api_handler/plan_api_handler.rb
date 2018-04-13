@@ -3,6 +3,7 @@ module Spree
     class StripeRecurring < Spree::Recurring
       module ApiHandler
         module PlanApiHandler
+          
           def create_plan(plan)
             raise_invalid_object_error(plan, Spree::Plan)
             begin
@@ -12,7 +13,9 @@ module Spree
                 amount: stripe_amount(plan.amount),
                 interval: plan.interval,
                 interval_count: plan.interval_count,
-                name: plan.name,
+                product: {
+                  name: plan.name,
+                },
                 currency: plan.currency,
                 id: plan.api_plan_id,
                 trial_period_days: plan.trial_period_days
