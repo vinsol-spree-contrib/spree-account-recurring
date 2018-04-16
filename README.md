@@ -11,8 +11,13 @@ Installation
 Install `spree_account_recurring` by adding the following to your `Gemfile`:
 
 ```ruby
+# Spree >= 3.2
+gem 'spree_account_recurring', github: 'vinsol-spree-contrib/spree-account-recurring',  branch: 'master'
+```
+
+```ruby
 # Spree 3.1.x
-gem 'spree_account_recurring', '~> 2.1'
+gem 'spree_account_recurring', github: 'vinsol-spree-contrib/spree-account-recurring',  branch: '3-1-stable'
 ```
 
 ```ruby
@@ -82,11 +87,10 @@ Stripe Webhook
 Create a webhook at stripe with url `http://your.domain.name/recurring_hooks/handler` which will receive below mentioned stripe event hooks.
 
 Events:
+* `customer.subscription.created`
+* `customer.subscription.updated`
 * `invoice.payment_succeeded`
-* `invoice.payment_failed`
 * `charge.succeeded`
-* `charge.failed`
-* `charge.captured`
 
 These events can be viewed at admin in "Reports" -> "Subscription Events"
 
