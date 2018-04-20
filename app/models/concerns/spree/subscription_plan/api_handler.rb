@@ -12,11 +12,17 @@ module Spree
       def subscribe
         if provider.subscribe(self)
           self.subscribed_at = Time.current
+        else
+          errors.add(:base, "We are unable to process your request. Please try later.")
+          throw :abort
         end
       end
 
       def unsubscribe
-        provider.unsubscribe(self)
+        unless provider.unsubscribe(self)
+          errors.add(:base, "We are unable to unsubscribe your plan right now. Please try later.")
+          throw :abort
+        end
       end
 
       def save_and_manage_api(*args)

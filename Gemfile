@@ -12,11 +12,10 @@ group :test do
   gem 'capybara', '~> 2.1'
   gem 'database_cleaner'
   gem 'factory_girl', '~> 4.2'
-  # gem 'ffaker'
+  gem 'ffaker'
   gem 'simplecov'
   gem 'selenium-webdriver'
-  gem 'stripe-ruby-mock', '2.4.1'
-  gem 'byebug'
+  gem 'stripe-ruby-mock', '2.5.3'
 end
 
 gemspec
