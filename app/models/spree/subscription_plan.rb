@@ -1,6 +1,5 @@
 module Spree
   class SubscriptionPlan < Spree::Base
-    include RoleSubscriber
     include RestrictiveDestroyer
     include ApiHandler
 

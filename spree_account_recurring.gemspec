@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   s.requirements << 'none'
 
   s.add_dependency 'spree_core', '~> 3.1.0'
-  s.add_dependency 'stripe', '1.58.0'
+  s.add_dependency 'stripe', '3.3.2'
   s.add_dependency 'stripe_tester'
 
   s.add_development_dependency 'rspec-rails',  '~> 3.4'
