@@ -23,7 +23,7 @@ module Spree
       if @subscription.save_and_manage_api(unsubscribed_at: Time.current)
         redirect_to plans_path, notice: "Subscription has been cancelled."
       else
-        flash.now[:error] = @subscription.errors.join(",")
+        flash.now[:error] = @subscription.errors.full_messages.join(",")
         render :show
       end
     end
