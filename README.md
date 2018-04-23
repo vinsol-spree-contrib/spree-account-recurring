@@ -5,6 +5,21 @@ Spree extension to manage recurring payments/subscriptions using [Stripe Payment
 
 All plans and subscription scenarios are been managed as per [Stripe Docs](https://stripe.com/docs/api)
 
+Demo
+----
+Try Spree Account Recurring for Spree master with direct deployment on Heroku:
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/vinsol-spree-contrib/spree-demo-heroku/tree/spree-account-recurring-master)
+
+Try Spree Account Recurring for Spree 3-4 with direct deployment on Heroku:
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/vinsol-spree-contrib/spree-demo-heroku/tree/spree-account-recurring-3-4)
+
+
+Try Spree Account Recurring for Spree 3-1 with direct deployment on Heroku:
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/vinsol-spree-contrib/spree-demo-heroku/tree/spree-account-recurring-3-1)
+
 Installation
 ------------
 
