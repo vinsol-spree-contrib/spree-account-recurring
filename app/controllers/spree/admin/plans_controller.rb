@@ -3,7 +3,6 @@ module Spree
     class PlansController < Spree::Admin::BaseController
       before_action :load_recurring
       before_action :find_plan, :only => [:edit, :destroy, :update]
-      before_action :ensure_no_active_subscription, only: :destroy
 
       def index
         @plans = Spree::Plan.undeleted.order('id desc')
@@ -36,7 +35,7 @@ module Spree
         if @plan.restrictive_destroy_with_api
           flash[:success] = "Plan has been deleted."
         else
-          flash[:error] = "Plan could not be deleted."
+          flash[:error] = @plan.errors.full_messages.join("\n")
         end
         render_js_for_destroy
       end
@@ -65,12 +64,6 @@ module Spree
         end
       end
 
-      def ensure_no_active_subscription
-        if @plan.subscription_plans.active.present?
-          flash[:error] = "You can not delete a plan with active subscriptions"
-          render_js_for_destroy
-        end
-      end
     end
   end
 end

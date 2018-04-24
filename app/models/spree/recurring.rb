@@ -12,6 +12,8 @@ module Spree
     validates :type, :name, presence: true
     validates :type, uniqueness: { message: 'of provider recurring already exists', scope: :deleted_at }
 
+    before_update :ensure_no_undeleted_plans_present, if: :deleted_at_changed?
+
     scope :active, -> { undeleted.where(active: true) }
 
     def self.display_name
@@ -29,5 +31,14 @@ module Spree
     def has_preferred_keys?
       preferred_secret_key.present? && preferred_public_key.present?
     end
+
+    private
+
+      def ensure_no_undeleted_plans_present
+        if plans.undeleted.present?
+          errors.add(:base, "You can not delete a recurring with active plans")
+          throw :abort
+        end
+      end
   end
 end
