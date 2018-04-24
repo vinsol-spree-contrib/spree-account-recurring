@@ -3,7 +3,6 @@ module Spree
     class RecurringsController < Spree::Admin::BaseController
       before_action :find_recurring, :only => [:edit, :update, :destroy]
       before_action :build_recurring, :only => :create
-      before_action :ensure_no_undeleted_plans_present, only: :destroy
 
       def index
         @recurrings = Spree::Recurring.undeleted.order('id desc')
@@ -35,7 +34,7 @@ module Spree
         if @recurring.restrictive_destroy
           flash[:success] = "Recurring has been deleted."
         else
-          flash[:error] = "Recurring could not be deleted."
+          flash[:error] = @recurring.errors.full_messages.join("\n")
         end
         render_js_for_destroy
       end
@@ -68,12 +67,6 @@ module Spree
         params[ActiveModel::Naming.param_key(@recurring)]
       end
 
-      def ensure_no_undeleted_plans_present
-        if @recurring.plans.undeleted.present?
-          flash[:error] = "You can not delete a recurring with active plans"
-          render_js_for_destroy
-        end
-      end
     end
   end
 end

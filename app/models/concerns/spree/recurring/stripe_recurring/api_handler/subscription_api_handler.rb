@@ -11,11 +11,7 @@ module Spree
               stripe_subscription = Stripe::Subscription.create(stripe_subscription_params(customer.id, subscription_plan))
 
               subscription_plan.stripe_subscription_id =  stripe_subscription.id # add stripe subscription id to subscription
-            rescue Stripe::InvalidRequestError => e
-              false
-            rescue Stripe::AuthenticationError => e
-              false
-            rescue Stripe::StripeError => e
+            rescue Stripe::InvalidRequestError, Stripe::AuthenticationError, Stripe::StripeError
               false
             end
           end
@@ -26,11 +22,7 @@ module Spree
             begin
               stripe_subscription = Stripe::Subscription.retrieve(subscription_plan.stripe_subscription_id)
               stripe_subscription.delete
-            rescue Stripe::InvalidRequestError => e
-              false
-            rescue Stripe::AuthenticationError => e
-              false
-            rescue Stripe::StripeError => e
+            rescue Stripe::InvalidRequestError, Stripe::AuthenticationError, Stripe::StripeError
               false
             end
           end
