@@ -10,7 +10,7 @@ Deface::Override.new(
   :name => "add_subscriptions_reports_index",
   :insert_after => "table.table tbody",
   :text => %q{<tr data-hook='reports_row'>
-      <td><%= link_to Spree.t(:subscriptions), admin_subscriptions_url %></td>
+      <td><%= link_to Spree.t(:subscriptions), admin_subscription_plans_url %></td>
       <td>View Recurring Subscriptions</td>
     </tr>
     <tr data-hook='reports_row'>

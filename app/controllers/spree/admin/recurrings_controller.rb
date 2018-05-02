@@ -34,7 +34,7 @@ module Spree
         if @recurring.restrictive_destroy
           flash[:success] = "Recurring has been deleted."
         else
-          flash[:error] = "Recurring could not be deleted."
+          flash[:error] = @recurring.errors.full_messages.join("\n")
         end
         render_js_for_destroy
       end
@@ -64,8 +64,9 @@ module Spree
       end
 
       def preference_params
-        params.require(ActiveModel::Naming.param_key(@recurring)).permit!
+        params[ActiveModel::Naming.param_key(@recurring)].permit!
       end
+
     end
   end
 end

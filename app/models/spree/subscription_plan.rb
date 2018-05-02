@@ -1,6 +1,5 @@
 module Spree
-  class Subscription < Spree::Base
-    include RoleSubscriber
+  class SubscriptionPlan < Spree::Base
     include RestrictiveDestroyer
     include ApiHandler
 
@@ -17,10 +16,17 @@ module Spree
     validates :plan_id, uniqueness: { scope: [:user_id, :unsubscribed_at] }
     validates :user_id, uniqueness: { scope: :unsubscribed_at }
 
-    delegate_belongs_to :plan, :api_plan_id
+    if Rails.version.to_f >= 5.1
+      delegate :api_plan_id, to: :plan
+    else
+      delegate_belongs_to :plan, :api_plan_id
+    end
+
     before_validation :set_email, on: :create
 
     validate :verify_plan, on: :create
+
+    scope :active, -> { where(unsubscribed_at: nil) }
 
     private
 

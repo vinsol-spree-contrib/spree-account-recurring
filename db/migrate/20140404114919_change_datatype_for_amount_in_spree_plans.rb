@@ -1,4 +1,4 @@
-class ChangeDatatypeForAmountInSpreePlans < ActiveRecord::Migration
+class ChangeDatatypeForAmountInSpreePlans < ActiveRecord::Migration[4.2]
   def up
     change_column :spree_plans, :amount, :decimal, :scale => 2, :precision => 8
   end

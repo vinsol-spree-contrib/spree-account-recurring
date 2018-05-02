@@ -1,5 +1,5 @@
 Spree::User.class_eval do
-  has_many :subscriptions
+  has_many :subscription_plans
 
   def find_or_create_stripe_customer(token=nil)
     return api_customer if stripe_customer_id?

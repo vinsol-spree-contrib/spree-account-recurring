@@ -1,4 +1,4 @@
-class CreateSpreePlan < ActiveRecord::Migration
+class CreateSpreePlan < ActiveRecord::Migration[4.2]
   def change
     create_table :spree_plans do |t|
       t.string :api_plan_id, nil: false

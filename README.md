@@ -5,14 +5,34 @@ Spree extension to manage recurring payments/subscriptions using [Stripe Payment
 
 All plans and subscription scenarios are been managed as per [Stripe Docs](https://stripe.com/docs/api)
 
+Demo
+----
+Try Spree Account Recurring for Spree master with direct deployment on Heroku:
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/vinsol-spree-contrib/spree-demo-heroku/tree/spree-account-recurring-master)
+
+Try Spree Account Recurring for Spree 3-4 with direct deployment on Heroku:
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/vinsol-spree-contrib/spree-demo-heroku/tree/spree-account-recurring-3-4)
+
+
+Try Spree Account Recurring for Spree 3-1 with direct deployment on Heroku:
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/vinsol-spree-contrib/spree-demo-heroku/tree/spree-account-recurring-3-1)
+
 Installation
 ------------
 
 Install `spree_account_recurring` by adding the following to your `Gemfile`:
 
 ```ruby
+# Spree >= 3.2
+gem 'spree_account_recurring', github: 'vinsol-spree-contrib/spree-account-recurring',  branch: 'master'
+```
+
+```ruby
 # Spree 3.1.x
-gem 'spree_account_recurring', '~> 2.1'
+gem 'spree_account_recurring', github: 'vinsol-spree-contrib/spree-account-recurring',  branch: '3-1-stable'
 ```
 
 ```ruby
@@ -49,6 +69,8 @@ bundle exec rails g spree_account_recurring:install
 Usage
 -----
 
+This gem is used to create plans, which can be subscribed by a user, and it will charge the user automatically through Stripe. Currently, we are supporting one active subscription per user at one time.
+
 At Admin end this will add a configuration tab as "Recurring".
 
 * Creating a Recurring Provider:
@@ -62,7 +84,7 @@ At Admin end this will add a configuration tab as "Recurring".
 
 One Recurring Provider can have multiple plans.
 
-At Front end you can view all plans here: `http://your.domain.name/recurring/plans`
+At Front end you can view all plans here: `http://your.domain.name/plans`
 
 * Subscribe a plan:
   * Click subscribe for any plan.
@@ -80,18 +102,10 @@ Stripe Webhook
 Create a webhook at stripe with url `http://your.domain.name/recurring_hooks/handler` which will receive below mentioned stripe event hooks.
 
 Events:
-* `customer.subscription.deleted`
 * `customer.subscription.created`
 * `customer.subscription.updated`
 * `invoice.payment_succeeded`
-* `invoice.payment_failed`
 * `charge.succeeded`
-* `charge.failed`
-* `charge.refunded`
-* `charge.captured`
-* `plan.created`
-* `plan.updated`
-* `plan.deleted`
 
 These events can be viewed at admin in "Reports" -> "Subscription Events"
 

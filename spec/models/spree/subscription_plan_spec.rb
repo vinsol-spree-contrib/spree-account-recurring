@@ -1,14 +1,14 @@
 require 'spec_helper'
 
-describe Spree::Subscription do
+describe Spree::SubscriptionPlan do
   before { StripeMock.start }
   after { StripeMock.stop }
 
-  let!(:subscriber) { Spree::Role.create!(name: 'subscriber') }
+  # let!(:subscriber) { Spree::Role.create!(name: 'subscriber') }
   let(:user) { Spree::User.create!(email: 'user@test.com', password: '123456', password_confirmation: '123456') }
   let(:recurring) { Spree::Recurring::StripeRecurring.create!(name: 'Test recurring', active: true) }
   let(:plan) { recurring.plans.create!(active: true, amount: 10, interval: 'month', interval_count: 1, name: 'Test Plan', currency: 'usd', trial_period_days: 0) }
-  let(:subscription) { plan.subscriptions.create!(email: user.email, user_id: user.id, card_token: 'test_card_token') }
+  let(:subscription) { plan.subscription_plans.create!(email: user.email, user_id: user.id, card_token: 'test_card_token') }
 
   it { subscription.should belong_to :plan }
   it { subscription.should belong_to :user }
@@ -21,10 +21,10 @@ describe Spree::Subscription do
 
   describe 'ransack' do
     it 'has email as ransackable attribute' do
-      expect(Spree::Subscription.ransackable_attributes).to include('email')
+      expect(Spree::SubscriptionPlan.ransackable_attributes).to include('email')
     end
     it 'has subscribed_at as ransackable attribute' do
-      expect(Spree::Subscription.ransackable_attributes).to include('subscribed_at')
+      expect(Spree::SubscriptionPlan.ransackable_attributes).to include('subscribed_at')
     end
   end
 end

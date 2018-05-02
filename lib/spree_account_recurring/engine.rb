@@ -6,8 +6,16 @@ module SpreeAccountRecurring
 
     config.autoload_paths += %W(#{config.root}/lib)
 
-    Spree::Core::Environment.class_eval do
-      attr_accessor :recurring_providers
+    # For Spree Master (currently > 3.4)
+    if Spree::Core::Engine.const_defined?(:Environment)
+      Spree::Core::Engine::Environment.class_eval do
+        attr_accessor :recurring_providers
+      end
+    else
+    # For Spree <= 3.4
+      Spree::Core::Environment.class_eval do
+        attr_accessor :recurring_providers
+      end
     end
 
     # use rspec for tests

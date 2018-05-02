@@ -1,4 +1,4 @@
-class CreateSpreeSubscriptionEvents < ActiveRecord::Migration
+class CreateSpreeSubscriptionEvents < ActiveRecord::Migration[4.2]
   def change
     create_table :spree_subscription_events do |t|
       t.string :event_id

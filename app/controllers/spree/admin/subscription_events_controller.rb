@@ -6,7 +6,7 @@ module Spree
 
       def index
         @search = Spree::SubscriptionEvent.ransack(params[:q])
-        @subscription_events = @search.result.includes(subscription: { plan: :recurring }).references(subscription: { plan: :recurring }).page(params[:page]).per(15)
+        @subscription_events = @search.result.includes(subscription_plan: { plan: :recurring }).references(subscription_plan: { plan: :recurring }).page(params[:page]).per(15)
         respond_with(@subscription_events)
       end
     end
