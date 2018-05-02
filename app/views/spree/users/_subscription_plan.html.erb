@@ -1,0 +1,27 @@
+<div>
+  <h3><%= Spree.t(:my_subscription_plans) %></h3>
+  <% if @subscription_plan.present? %>
+    <% plan = @subscription_plan.plan %>
+    <table class="table table-striped">
+      <thead class="active">
+      <tr>
+        <th class="name"><%= Spree.t(:name) %></th>
+        <th class="interval_count"><%= Spree.t(:interval) %></th>
+        <th class="amount"><%= Spree.t(:amount) %></th>
+        <th class="trial_period_days"><%= Spree.t(:trial_period_days) %></th>
+        <th> </th>
+      </tr>
+      </thead>
+      <tbody>
+        <td> <%= plan.name %> </td>
+        <td> Every <%= plan.interval_count %> <%= plan.interval.pluralize(plan.interval_count) %> </td>
+        <td> <%= number_to_currency(plan.amount) %> </td>
+        <td>  <%= plan.trial_period_days %> <%= 'day'.pluralize(plan.trial_period_days) %> trial </td>
+        <td>  <%= link_to Spree.t(:view_subscription_plan), plans_path %> </td>
+      </tbody>
+    </table>
+  <% else %>
+    <div class="alert alert-info"><%= Spree.t(:you_have_no_subscription_plans_yet) %></div>
+  <% end %>
+  <br />
+</div>

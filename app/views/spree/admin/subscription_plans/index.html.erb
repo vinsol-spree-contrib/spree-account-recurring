@@ -11,7 +11,7 @@
 <% end %>
 
 <div class="well">
-  <%= search_form_for @search, :url => spree.admin_subscriptions_url  do |s| %>
+  <%= search_form_for @search, :url => spree.admin_subscription_plans_url  do |s| %>
     <div class="date-range-filter form-group">
       <%= label_tag nil, Spree.t(:date_range) %>
       <div class="date-range-filter row">
@@ -54,13 +54,13 @@
           <td><%= subscription.subscribed_at.try(:strftime, '%d-%h-%Y') %></td>
           <td><%= subscription.unsubscribed_at.try(:strftime, '%d-%h-%Y') || 'N/A' %></td>
           <td data-hook="admin_recurring_plans_index_row_actions" class="actions">
-            <%= link_to Spree.t(:view_events), admin_subscription_events_url(q: {subscription_email_eq: subscription.email}) %>
+            <%= link_to Spree.t(:view_events), admin_subscription_events_url(q: {subscription_plan_email_eq: subscription.email}) %>
           </td>
         </tr>
       <% end %>
     </tbody>
   </table>
-  
+
   <%= paginate @subscriptions %>
 <% else %>
   <div class="col-md-12 no-objects-found alert alert-info">

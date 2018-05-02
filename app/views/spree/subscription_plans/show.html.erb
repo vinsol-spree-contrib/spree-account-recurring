@@ -1,0 +1,4 @@
+<%= @subscription.plan.api_plan_id %>
+<% unless @subscription.is_destroyed? %>
+  <%= button_link_to Spree.t(:unsubscribe), plan_subscription_plan_url(@plan, @subscription), method: :delete, confirm: "Do you want to unsubscribe ?" %>
+<% end %>

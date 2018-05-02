@@ -2,10 +2,10 @@ require 'spec_helper'
 
 describe Spree::User do
   let(:user) { Spree::User.create!(email: 'user@test.com', password: '123456', password_confirmation: '123456') }
-  let(:subscriber) { Spree::Role.create!(name: 'subscriber') }
+  # let(:subscriber) { Spree::Role.create!(name: 'subscriber') }
   let(:empty_array) { [] }
 
-  it { should have_many :subscriptions }
+  it { should have_many :subscription_plans }
 
   describe '#find_or_create_stripe_customer' do
     let(:token) { 'stripe_test_card_token' }

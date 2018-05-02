@@ -1,6 +1,5 @@
 module Spree
-  class Subscription < Spree::Base
-    include RoleSubscriber
+  class SubscriptionPlan < Spree::Base
     include RestrictiveDestroyer
     include ApiHandler
 
@@ -21,6 +20,8 @@ module Spree
     before_validation :set_email, on: :create
 
     validate :verify_plan, on: :create
+
+    scope :active, -> { where(unsubscribed_at: nil) }
 
     private
 
