@@ -127,6 +127,13 @@ Simply add this require statement to your spec_helper:
 require 'spree_account_recurring/factories'
 ```
 
+## See It In Action
+
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=mRiaXeuV-bQ
+" target="_blank"><img src="http://img.youtube.com/vi/mRiaXeuV-bQ/0.jpg" 
+alt="Youtube Video Tutorial" /></a>
+
+
 Contributing
 ------------
 
